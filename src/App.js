@@ -29,26 +29,21 @@ function Repertoir({ songs, handleDoubleClick }) {
   const [showRepertoir, setShowRepertoir] = useState(false);
 
   return (
-    <>
-      {!showRepertoir && (
-        <span className="toggle-open" onClick={(e) => setShowRepertoir(true)}>
-          Open Repertoir
-        </span>
-      )}
+    <div className="repertoir">
+      <span className="toggle-open" onClick={(e) => setShowRepertoir(true)}>
+        {!showRepertoir && 'Open Song Bank'}
+      </span>
+      <span className="toggle-open" onClick={(e) => setShowRepertoir(false)}>
+        {showRepertoir && '❌'}
+      </span>
       {showRepertoir && (
-        <span className="toggle-open" onClick={(e) => setShowRepertoir(false)}>
-          ❌
-        </span>
-      )}
-
-      {showRepertoir && (
-        <div className="repertoir">
-          <h2>Repertoir</h2>
+        <>
+          <h2>Song Bank</h2>
           <SongBank songs={songs} handleDoubleClick={handleDoubleClick} />
           <Button>Add Song</Button>
-        </div>
+        </>
       )}
-    </>
+    </div>
   );
 }
 
