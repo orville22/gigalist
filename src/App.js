@@ -7,6 +7,8 @@ export default function App() {
   function handleDoubleClick(song) {
     if (playList.includes(song)) {
       alert('Song already in playlist.');
+    } else if (playList.length >= 12) {
+      alert('Playlist is full. Delete to replace a song.');
     } else {
       setPlayList([...playList, song]);
     }
@@ -30,6 +32,7 @@ function Button({ onClick, children }) {
 
 function Repertoir({ songs, handleDoubleClick }) {
   const [showRepertoir, setShowRepertoir] = useState(false);
+  const [isOpenAddSong, setOpenAddSong] = useState(false);
 
   return (
     <>
@@ -46,13 +49,22 @@ function Repertoir({ songs, handleDoubleClick }) {
 
       {showRepertoir && (
         <div className="repertoir">
-          <h2>Repertoir</h2>
+          <h2>Song Bank</h2>
           <SongBank songs={songs} handleDoubleClick={handleDoubleClick} />
-          <Button>Add Song</Button>
+          <Button
+            onClick={() => setOpenAddSong((isOpenAddSong) => !isOpenAddSong)}
+          >
+            Add Song
+          </Button>
+          {isOpenAddSong && <FormAddSong />}
         </div>
       )}
     </>
   );
+}
+
+function FormAddSong() {
+  return <form>Add song</form>;
 }
 
 function SongBank({ songs, handleDoubleClick }) {
@@ -82,8 +94,16 @@ function PlayList({ playList, onDelete }) {
       <ul>
         {playList.map((song, index) => (
           <li onDoubleClick={() => onDelete(song)} draggable>
-            <span className="num">{index + 1}</span>&nbsp;&nbsp;&nbsp;
-            {song.title}
+            <span className="num">{index + 1}</span>&nbsp;&nbsp;
+            {song.title}{' '}
+            <a
+              className="lyrics"
+              href={song.lyrics}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Lyrics
+            </a>
           </li>
         ))}
       </ul>
