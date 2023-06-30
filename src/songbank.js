@@ -135,7 +135,7 @@ export const songbank = [
   {
     id: 20,
     title: 'Noypi',
-    artist: 'Bambpp',
+    artist: 'Bamboo',
     genre: 'OPM',
     lyrics: 'URL',
   },

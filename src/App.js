@@ -5,8 +5,11 @@ export default function App() {
   const [playList, setPlayList] = useState([]); //set list where the songs will be added on upon double-clicking the song in the repertoir.
 
   function handleDoubleClick(song) {
-    console.log(song.title);
-    setPlayList([...playList, song]);
+    if (playList.includes(song)) {
+      alert('Song already in playlist.');
+    } else {
+      setPlayList([...playList, song]);
+    }
   }
 
   function handleDelete(song) {
