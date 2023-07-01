@@ -5,8 +5,13 @@ export default function App() {
   const [playList, setPlayList] = useState([]); //set list where the songs will be added on upon double-clicking the song in the repertoir.
 
   function handleDoubleClick(song) {
-    console.log(song.title);
-    setPlayList([...playList, song]);
+    if (playList.includes(song)) {
+      alert('Song already in playlist. Choose a different song.');
+    } else if (playList.length === 12) {
+      alert('Playlist is full.');
+    } else {
+      setPlayList([...playList, song]);
+    }
   }
 
   function handleDelete(song) {
@@ -75,7 +80,15 @@ function PlayList({ playList, onDelete }) {
         {playList.map((song, index) => (
           <li onDoubleClick={() => onDelete(song)} draggable>
             <span className="num">{index + 1}</span>&nbsp;&nbsp;&nbsp;
-            {song.title}
+            {song.title}{' '}
+            <a
+              href={song.lyrics}
+              target="_blank"
+              rel="noreferrer"
+              className="lyrics"
+            >
+              Lyrics
+            </a>
           </li>
         ))}
       </ul>
