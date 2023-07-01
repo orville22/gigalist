@@ -6,15 +6,9 @@ export default function App() {
 
   function handleDoubleClick(song) {
     if (playList.includes(song)) {
-<<<<<<< HEAD
       alert('Song already in playlist. Choose a different song.');
     } else if (playList.length === 12) {
       alert('Playlist is full.');
-=======
-      alert('Song already in playlist.');
-    } else if (playList.length >= 12) {
-      alert('Playlist is full. Delete to replace a song.');
->>>>>>> main
     } else {
       setPlayList([...playList, song]);
     }
@@ -32,13 +26,8 @@ export default function App() {
   );
 }
 
-function Button({ onClick, children }) {
-  return <button onClick={onClick}>{children}</button>;
-}
-
 function Repertoir({ songs, handleDoubleClick }) {
   const [showRepertoir, setShowRepertoir] = useState(false);
-  const [isOpenAddSong, setOpenAddSong] = useState(false);
 
   return (
     <div className="repertoir">
@@ -49,37 +38,34 @@ function Repertoir({ songs, handleDoubleClick }) {
         {showRepertoir && '❌'}
       </span>
       {showRepertoir && (
-<<<<<<< HEAD
         <>
           <h2>Song Bank</h2>
           <SongBank songs={songs} handleDoubleClick={handleDoubleClick} />
-          <Button>Add Song</Button>
+          <FormAddSong />
         </>
-=======
-        <span className="toggle-open" onClick={(e) => setShowRepertoir(false)}>
-          ❌
-        </span>
-      )}
-
-      {showRepertoir && (
-        <div className="repertoir">
-          <h2>Song Bank</h2>
-          <SongBank songs={songs} handleDoubleClick={handleDoubleClick} />
-          <Button
-            onClick={() => setOpenAddSong((isOpenAddSong) => !isOpenAddSong)}
-          >
-            Add Song
-          </Button>
-          {isOpenAddSong && <FormAddSong />}
-        </div>
->>>>>>> main
       )}
     </div>
   );
 }
 
 function FormAddSong() {
-  return <form>Add song</form>;
+  return (
+    <form>
+      <label>Song Title</label>
+      <input type="text" />
+
+      <label>Artist</label>
+      <input type="text" />
+
+      <label>Genre</label>
+      <input type="text" />
+
+      <label>Lyrics URL</label>
+      <input type="text" placeholder="Optional" />
+
+      <button>Add Song</button>
+    </form>
+  );
 }
 
 function SongBank({ songs, handleDoubleClick }) {
@@ -109,7 +95,6 @@ function PlayList({ playList, onDelete }) {
       <ul>
         {playList.map((song, index) => (
           <li onDoubleClick={() => onDelete(song)} draggable>
-<<<<<<< HEAD
             <span className="num">{index + 1}</span>&nbsp;&nbsp;&nbsp;
             {song.title}{' '}
             <a
@@ -117,15 +102,6 @@ function PlayList({ playList, onDelete }) {
               target="_blank"
               rel="noreferrer"
               className="lyrics"
-=======
-            <span className="num">{index + 1}</span>&nbsp;&nbsp;
-            {song.title}{' '}
-            <a
-              className="lyrics"
-              href={song.lyrics}
-              target="_blank"
-              rel="noreferrer"
->>>>>>> main
             >
               Lyrics
             </a>

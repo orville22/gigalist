@@ -9,7 +9,6 @@ html {
   font-size: 62.5%; }
 
 body {
-  font-size: 2.4rem;
   font-family: sans-serif;
   color: #27374d;
   font-family: 'Montserrat', sans-serif;
@@ -43,8 +42,19 @@ h2 {
   display: flex;
   flex-direction: column;
   background-color: #dde6ed;
-  padding: 3rem;
+  padding: 3.5rem;
   position: relative; }
+  .repertoir form {
+    margin: 3rem 0 1rem 0;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column; }
+    .repertoir form label {
+      margin-bottom: 0.2rem; }
+    .repertoir form input {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      padding: 0.2rem; }
 
 .songbank {
   display: flex;
@@ -62,9 +72,7 @@ h2 {
       padding: 0.5rem;
       margin-left: 1rem; }
 
-button,
-select,
-input {
+button {
   background-color: #526d82;
   color: #fff;
   font-family: inherit;
@@ -73,6 +81,7 @@ input {
   padding: 1.2rem 3.2rem;
   font-weight: 700;
   font-size: 1.8rem;
+  margin-top: 0.5rem;
   cursor: pointer; }
 
 .playlist {
