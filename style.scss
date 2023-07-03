@@ -21,6 +21,7 @@ body {
 a:link,
 a:visited {
   text-decoration: none;
+  color: #435b6d;
 }
 
 h2 {
@@ -34,6 +35,59 @@ h2 {
   width: 100%;
   display: flex;
   margin: 0 auto;
+  padding-top: 5rem;
+}
+
+.nav-bar {
+  position: fixed;
+  z-index: 9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0.5rem 0.5rem 0.5rem rgba(39, 55, 77, 0.109);
+  height: 5rem;
+  padding: 0 4rem;
+  background-color: #dde6ed;
+
+  .logo {
+    font-size: 2rem;
+    cursor: pointer;
+
+    span {
+      font-size: 3.5rem;
+    }
+  }
+
+  .main-nav {
+    display: flex;
+
+    .nav-item {
+      font-size: 1.5rem;
+      margin-left: 3rem;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease-in-out;
+
+      &::after {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        content: '';
+        height: 2px;
+        background-color: #738a9c;
+        width: 100%;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: all 0.3s ease-in-out;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+      }
+    }
+  }
 }
 
 .toggle-open {
@@ -108,6 +162,7 @@ button {
 }
 
 .playlist {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -149,5 +204,20 @@ button:hover {
 
   &:hover {
     color: #738a9c;
+  }
+}
+
+.playlistSize {
+  position: absolute;
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: #435b6d;
+  input {
+    font-size: 3rem;
+    padding: 1rem;
   }
 }
